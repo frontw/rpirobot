@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+Software License Agreement (BSD)
+
+\file      description.urdf.xacro
+\authors   Roman Fedorenko <frontwise@gmail.com>
+\copyright based on Husky by Clearpath Robotics code.
+
+-->
+
+<robot name="rpirobot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="laser_enabled" default="false" />
+  <xacro:arg name="ur5_enabled" default="false" />
+  <xacro:arg name="kinect_enabled" default="false" />
+
+  <xacro:include filename="$(find rpirobot_description)/urdf/husky.urdf.xacro" />
+  <xacro:rpirobot_robot />
+
+</robot>

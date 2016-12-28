@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>rpirobot_viz</name>
+  <version>0.2.2</version>
+  <description>Visualization configuration</description>
+
+  <author email="frontwise@gmail.com">Roman Fedorenko</author>
+  <maintainer email="frontwise@gmail.com">Roman Fedorenko</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/</url>
+  <url type="bugtracker">https://github.com/</url>
+  <url type="repository">https://github.com/</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+
+  <run_depend>rpirobot_description</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>rviz_imu_plugin</run_depend>
+
+  <export>
+  </export>
+</package>

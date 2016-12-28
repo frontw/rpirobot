@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+\file      playpen.launch
+\authors   Roman Fedorenko <frontwise@gmail.com
+\copyright Based on husky_playpen, Clearpath Robotics, Inc.
+-->
+
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rpirobot_gazebo)/worlds/clearpath_playpen.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <arg name="laser_enabled" default="true"/>
+  <arg name="robot_initial_pose" default="$(optenv ROBOT_INITIAL_POSE)"/>
+  <arg name="rpirobot_gazebo_description" default="$(find rpirobot_gazebo)/urdf/description.gazebo.xacro"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg rpirobot_gazebo_description)'
+    laser_enabled:=$(arg laser_enabled)" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Load control information -->
+  <include file="$(find rpirobot_control)/launch/control.launch"/>
+
+  <!-- Spawn robot in gazebo -->
+  <node name="spawn_rpirobot_model" pkg="gazebo_ros" type="spawn_model"
+    args="$(arg robot_initial_pose) -unpause -urdf -param robot_description -model mobile_base"/>
+
+
+
+</launch>
